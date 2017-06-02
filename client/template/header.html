@@ -1,0 +1,21 @@
+<template name="header">
+    <div id="header">
+    <h1><a href="{{pathFor 'mainContents'}}">*hachi*</a></h1>
+    <div class="login_article">
+        <!-- 로그인일때-->
+        <!--<span class="user_name">정지은</span>
+        <button type="button" class="btn_logout btn btn-default btn-default2">로그아웃</button>-->
+
+        <!-- 로그인 안할때 -->
+
+
+        {{> loginButtons}}
+
+         <!--<button type="button" class="btn_login btn btn-default">페이스북 로그인</button>-->
+        <!--<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+        </fb:login-button>-->
+        <!--<div class="fb-login-button" data-width="80" data-max-rows="1" data-size="medium" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>-->
+    </div>
+</div>
+    <!--// header -->
+</template>

@@ -1,0 +1,23 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>hachi</title>
+</head>
+
+<template name="layout">
+    <a class="skipnav" href="#container">메뉴 건너뛰기</a>
+
+    {{> popup}}
+
+    <div id="wrap">
+        {{> header}}
+        <div id="container">
+            {{> yield}}
+            <!--{{> mainContents}}-->
+        </div>
+
+        {{> footer}}
+    </div>
+</template>
+
+

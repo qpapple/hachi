@@ -1,0 +1,35 @@
+<template name="mainContents">
+    <div class="range">
+        <input type="search" class="search" />
+        <button type="button" class="btn btn-info">이름순</button>
+        <button type="button" class="btn btn-info">날짜순</button>
+        <button type="button" class="btn btn-info">좋아요순</button>
+    </div>
+
+    {{#if isLoggedIn}}
+    <div class="write_article">
+        <a href="/writeContents" class="btn_new_write"><img src="https://ovencloud.pro/images/btn/btn_modify2.png" alt="" /></a>
+    </div>
+    {{/if}}
+
+    <div class="list">
+        <ul>
+            {{#each conList}}
+                    {{> contentsItem}}
+           {{/each}}
+        </ul>
+    </div>
+</template>
+
+<template name="contentsItem">
+    <li class="{{userClass}}">
+        <a href="{{pathFor 'viewContents'}}" class="item_area">
+            <strong class="item_con"><i class="tt">{{title}} :</i>{{{con}}}</strong>
+            <span class="item_user">{{author.name}}</span>
+            <span class="item_date">| {{humanizeTime submitted}}</span>
+            <span class="item_count">| {{count}}</span>
+            <span class="item_like">| {{like}}</span>
+            <span class="item_comment">| {{commentCount}}</span>
+        </a>
+    </li>
+</template>

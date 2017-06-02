@@ -1,0 +1,11 @@
+/* popup.html */
+#popup {
+  position:fixed; top:0; left:0; z-index:997; width:100%; height:100%; text-align:center; display:none;
+  &.on {display: block;}
+  .popup_article {position:relative; z-index:999; display:inline-block; vertical-align:middle; min-width:300px; padding:20px; background-color:#fff; border-radius:6px;}
+  &:after {content:""; display:inline-block; vertical-align:middle; height:100%; width:0;}
+  &:before {content:""; position:fixed; top:0; left:0; width:100%; height:100%; background-color:#000; opacity:.7; z-index:998;}
+  .popup_btn_article {margin-top:20px;}
+
+
+}

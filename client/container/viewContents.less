@@ -1,0 +1,32 @@
+/* view.html*/
+.view_contents {
+  .view_article {min-height:300px; padding:15px 20px; box-shadow:0 1px 6px -2px #000; background-color:#fff; border-radius:4px;}
+  .modify_article {position:relative; margin-top:20px; text-align:center;}
+  .modify_article > span {position:absolute; top:0; right:0;}
+  .modify_article .btn_list {height:34px;}
+  .modify_article .btn_list:after,
+  .modify_article .btn_list:before {content:"";}
+  .modify_article .btn_list:after,
+  .modify_article .btn_list:before,
+  .modify_article .btn_list > i {display:block;width:20px;height:2px;margin:0 auto;background-color:#fff;}
+  .modify_article .btn_list:before,
+  .modify_article .btn_list > i {margin:2px auto 4px;}
+
+  .data_info {
+    margin:20px 0;
+    dl:before, dl, dt, dt:after, dd {display:inline-block; vertical-align:middle; font-size:16px;}
+    dl:before, dt {font-weight:bold;}
+    dl {width:50%; padding:5px 0; margin-left:-4px;}
+    dl:before {content:"*";}
+    dt:after {content:":"; padding-left:5px;}
+    dt {padding:0 5px;}
+    dd {color:#337ab7;}
+  }
+
+  .comment_article {
+    width:100%; margin-top:20px;
+    .comment,
+    button {display:inline-block;}
+    .comment {width:94.59%;}
+  }
+}

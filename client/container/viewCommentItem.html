@@ -1,0 +1,22 @@
+<template name="commentItem">
+    <div class="comment_view_article {{className}}">
+        <div class="comment_view">
+            {{#if isCommentEdit}}
+                <textarea value="{{comment}}" class="comment_edit"></textarea>
+            {{else}}
+                <p class="comment_area">{{comment}}</p>
+            {{/if}}
+            <p class="comment_data">{{humanizeTime submitted}}</p>
+            <p>{{author.name}}</p>
+        </div>
+
+        {{#if isCommentUser}}
+            {{#if isCommentEdit}}
+                <button type="button" class="btn_comment_end">완료</button>
+            {{else}}
+                <button type="button" class="btn_comment_edit">수정</button>
+            {{/if}}
+            <button type="button" class="btn_comment_delete">삭제</button>
+        {{/if}}
+    </div>
+</template>

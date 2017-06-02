@@ -1,0 +1,73 @@
+<template name="viewContents">
+    <div class="view_contents">
+
+        <div class="data_info">
+            <dl>
+                <dt>이름</dt>
+                <dd>{{hachi.author.name}}</dd>
+            </dl>
+
+            <dl>
+                <dt>날짜</dt>
+                <dd>{{humanizeTime hachi.submitted}}</dd>
+            </dl>
+
+            <dl>
+                <dt>userId</dt>
+                <dd>{{hachi.author.userId}}</dd>
+            </dl>
+
+            <dl>
+                <dt>_id</dt>
+                <dd>{{hachi._id}}</dd>
+            </dl>
+
+            <dl>
+                <dt>카운트</dt>
+                <dd>{{hachi.count}}</dd>
+            </dl>
+
+            <dl>
+                <dt>좋아요수</dt>
+                <dd>{{hachi.like}}</dd>
+            </dl>
+
+            <dl>
+                <dt>댓글수</dt>
+                <dd>{{hachi.commentCount}}</dd>
+            </dl>
+
+            <dl>
+                <dt>제목</dt>
+                <dd>{{hachi.title}}</dd>
+            </dl>
+        </div>
+
+        <div class="view_article">
+            {{{hachi.con}}}
+        </div>
+
+        <div class="comment_article">
+            <textarea placeholder="댓글입력" class="comment"></textarea>
+            <button type="button" class="btn btn-info btn_comment">입력</button>
+
+            {{#each commentList}}
+                {{> commentItem }}
+            {{/each}}
+        </div>
+
+        <div class="modify_article">
+            <a href="/" class="btn_list btn btn-primary"><i></i></a>
+            <span>
+            {{#if isUser}}
+                <a href="/editContents/{{hachi._id}}" class="btn btn-warning btn_edit">수정</a>
+                <button type="button" class="btn btn-danger btn_delete">삭제</button>
+            {{/if}}
+                <button type="button" class="btn btn-success btn_like">좋아요</button>
+            </span>
+        </div>
+    </div>
+</template>
+
+
+
