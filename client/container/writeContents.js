@@ -14,6 +14,7 @@ Template.writeContents.events({
     * 내가 필요한 값을 _hachi에 저장해서
     * mongoDB에 Hachis.insert(_hachi); 저장시켜줌
     * 그럼 어디서든 가져다 쓸 수 있다.
+    * asdasdasd
     * */
     'click .btn_ok': function(e, temp){
         e.preventDefault();
