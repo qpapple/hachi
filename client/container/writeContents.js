@@ -16,6 +16,7 @@ Template.writeContents.events({
     * 그럼 어디서든 가져다 쓸 수 있다.
     * asdasdasd
     * */
+
     'click .btn_ok': function(e, temp){
         e.preventDefault();
 
@@ -35,15 +36,15 @@ Template.writeContents.events({
             submitted : new Date()
         };
 
-        // 변수에 저장한 값들을 insert 시켜준다.
-        //Hachis.insert(_hachi);
-        // autopublish 삭제로 ->>
-        //  server에 올려서 db에 저장하도록
+        // 변수에 저장한 값들을 insert 시켜준다. 자동발행 안하므로 주석처리
+        // Hachis.insert(_hachi);
+
+        // autopublish 삭제로 ->> server에 올려서 db에 저장하도록
+        // Hachi.js에서 저장한 값을 call한다.
         Meteor.call("hachiInsert", _hachi , function(err, data){
             console.log(err);
             console.log(data);
         });
-
 
 
         // 저장 한 다음 mainContents로 이동하라.

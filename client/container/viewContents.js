@@ -12,7 +12,16 @@ Template.viewContents.events({
         e.preventDefault();
 
         var _hachi = temp.data.hachi;
-        Hachis.remove(_hachi._id);
+
+        // 자동발행 안하므로 주석처리
+        // Hachis.remove(_hachi._id);
+
+        // 자동발행 안하고 발행법::
+        var attr = _hachi._id;
+        Meteor.call("hachiRemove", attr , function(err, data){
+            console.log(err);
+            console.log(data);
+        });
 
         Router.go('mainContents');
     },
@@ -34,7 +43,19 @@ Template.viewContents.events({
             * */
             var _oldLike = temp.data.hachi.like || 0;
 
-            Hachis.update({_id:temp.data.hachi._id}, {$set:{like : _oldLike+1}});
+            // 자동발행 안하므로 주석처리
+            // Hachis.update({_id:temp.data.hachi._id}, {$set:{like : _oldLike+1}});
+
+            // 자동발행 안하고 발행법::
+            var attr = {
+                hachiId : temp.data.hachi._id,
+                like  : _oldLike+1
+            };
+            Meteor.call("likeUpdate", attr , function(err, data){
+                console.log(err);
+                console.log(data);
+            });
+
         }
     },
 
@@ -60,7 +81,17 @@ Template.viewContents.events({
             submitted : new Date()
         };
 
-        Comments.insert(_comments);
+
+        // 자동발행 안하므로 주석처리
+        //Comments.insert(_comments);
+
+        // 자동발행 안하고 발행법::
+        Meteor.call("commentInsert", _comments , function(err, data){
+            console.log(err);
+            console.log(data);
+        });
+
+
 
         // 댓글 입력 버튼 누르고 쓴값이 댓글부분에 남아있어서 val값을 빈 값으로 준다.
         $('.comment').val("");
@@ -73,7 +104,21 @@ Template.viewContents.events({
         * */
         if(temp.data && temp.data.hachi) {
             var _oldCount = temp.data.hachi.commentCount || 0;
-            Hachis.update({_id:temp.data.hachi._id}, {$set:{commentCount : _oldCount+1}});
+
+           // Hachis.update({_id:temp.data.hachi._id}, {$set:{commentCount : _oldCount+1}});
+
+            //commentCountUpdate
+
+            // 자동발행 안하고 발행법::
+            var attr = {
+                hachiId : temp.data.hachi._id,
+                commentCount  : _oldCount+1
+            };
+            Meteor.call("commentCountUpdate", attr , function(err, data){
+                console.log(err);
+                console.log(data);
+            });
+
         } else {
         }
     }
@@ -123,7 +168,19 @@ Template.viewContents.onRendered(function () {
     // 페이지 카운트를 해당 페이지값(_id값)에 접근할 때 마다 1씩 증가시킴
     if(this.data && this.data.hachi) {
         var _oldCount = this.data.hachi.count || 0;
-        Hachis.update({_id:this.data.hachi._id}, {$set:{count : _oldCount+1}});
+
+        // 자동발행 안하므로 주석처리
+        // Hachis.update({_id:this.data.hachi._id}, {$set:{count : _oldCount+1}});
+
+        // 자동발행 안하고 발행법::
+        var attr = {
+            hachiId : this.data.hachi._id,
+            count  :  _oldCount+1
+        };
+        Meteor.call("countUpdate", attr , function(err, data){
+            console.log(err);
+            console.log(data);
+        });
     } else {
     }
 

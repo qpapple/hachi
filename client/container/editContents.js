@@ -42,7 +42,20 @@ Template.editContents.events({
             };
 
             // 첫번째 {}는 검색값, 두번째 {}는 변경할 값
-            Hachis.update({_id:temp.data.hachi._id} , {$set:{title : _hachi.title, con : _hachi.con}});
+            // 자동발행하므로 주석처리
+            // Hachis.update({_id:temp.data.hachi._id} , {$set:{title : _hachi.title, con : _hachi.con}});
+
+            // 자동발행 안하고 발행법::
+            var attr = {
+                hachiId : temp.data.hachi._id,
+                title  :  _hachi.title,
+                con : _hachi.con
+            };
+            Meteor.call("editUpdate", attr , function(err, data){
+                console.log(err);
+                console.log(data);
+            });
+
 
             // 수정하고 완료버튼누르면, 수정된 페이지로 돌아가기
             Router.go('/viewContents/'+temp.data.hachi._id+'');
