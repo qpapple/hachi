@@ -3,6 +3,25 @@
  */
 
 Template.viewContents.events({
+    'click .btn_edit' : function(e, temp){
+        e.preventDefault();
+
+        // throwPopup이 실행되는데 안에 인자로 받은게 객체
+        // 해당 페이지의 아이디값을 가지고 있는 수정 페이지로 이동해라
+        throwPopup(
+            {
+                name:'editPopup',
+                callback :  function(_data) {
+                    if(_data.result == "yes") {
+                        var _hachi = temp.data.hachi;
+
+                        Router.go('/editContents/'+_hachi._id)
+                    }
+                }
+            }
+        );
+    },
+
     /*
     * 글 삭제버튼을 누르면 이 템플릿이 가지고 있는 id값을 지워준다.
     * 페이지 삭제되고,
@@ -11,7 +30,33 @@ Template.viewContents.events({
     'click .btn_delete' : function(e, temp){
         e.preventDefault();
 
-        var _hachi = temp.data.hachi;
+        // 이름이 deletePopup인것을 throwPopup호출한다. 이때 문자니까 ''
+        throwPopup(
+            {
+                name:'deletePopup',
+                callback : function(_data){
+                    console.log(_data);
+                    //Object {result: "no"}
+                    if(_data.result == "yes") {
+
+                        // id 얻어오는 법
+                        // 해당 id를 가져오는 페이지 삭제
+                        var _hachi = temp.data.hachi;
+                        var attr = _hachi._id;
+
+                        Meteor.call("hachiRemove", attr, function(err, data){
+                            console.log(err);
+                            console.log(data);
+                        });
+
+                        clearModal(this._id);
+                        Router.go('mainContents');
+
+                    }
+                }
+            });
+
+        /*var _hachi = temp.data.hachi;
 
         // 자동발행 안하므로 주석처리
         // Hachis.remove(_hachi._id);
@@ -23,7 +68,7 @@ Template.viewContents.events({
             console.log(data);
         });
 
-        Router.go('mainContents');
+        Router.go('mainContents');*/
     },
 
     /* 좋아요 버튼

@@ -60,7 +60,10 @@
             <a href="/" class="btn_list btn btn-primary"><i></i></a>
             <span>
             {{#if isUser}}
-                <a href="/editContents/{{hachi._id}}" class="btn btn-warning btn_edit">수정</a>
+                <!--현재 페이지 링크이동으로 수정할때
+                <a href="/editContents/{{hachi._id}}" class="btn btn-warning btn_edit">수정</a>-->
+                <!-- 팝업띄어서 확인받고 수정할때 -->
+                <button type="button" class="btn btn-warning btn_edit">수정</button>
                 <button type="button" class="btn btn-danger btn_delete">삭제</button>
             {{/if}}
                 <button type="button" class="btn btn-success btn_like">좋아요</button>

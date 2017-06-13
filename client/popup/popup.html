@@ -1,12 +1,35 @@
 <template name="popup">
     <!-- 팝업 -->
-    <div id="popup">
+    {{#each popupList}}
+        {{> popupItem}}
+    {{/each}}
+</template>
+
+<template name="popupItem">
+    {{> dynamicTemplate}}
+</template>
+
+<!--
+이렇게 종류가 많아지면 템플릿 네임으로 불러오기 위해서 뺀다 -> 각각.html
+<template name="insertPopup">
+    <div class="popup">
         <div class="popup_article">
-            <p>정말 삭제하시겠습니까?</p>
+            <p>정말 생성하시겠습니까?</p>
             <div class="popup_btn_article">
-                <button type="button" class="btn btn-danger">네</button>
-                <button type="button" class="btn btn-primary">닫기</button>
+                <button type="button" class="btn btn-danger btn_popup_yes">네</button>
+                <button type="button" class="btn btn-primary btn_popup_close">닫기</button>
             </div>
         </div>
     </div>
 </template>
+<template name="deletePopup">
+    <div class="popup">
+        <div class="popup_article">
+            <p>정말 삭제하시겠습니까?</p>
+            <div class="popup_btn_article">
+                <button type="button" class="btn btn-danger btn_popup_yes">네</button>
+                <button type="button" class="btn btn-primary btn_popup_close">닫기</button>
+            </div>
+        </div>
+    </div>
+</template>-->
